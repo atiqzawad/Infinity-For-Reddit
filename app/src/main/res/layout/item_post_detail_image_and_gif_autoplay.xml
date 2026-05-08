@@ -95,6 +95,7 @@
         android:layout_height="wrap_content"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
+        android:paddingTop="8dp"
         android:textColor="?attr/primaryTextColor"
         android:textSize="?attr/title_font_18"
         android:fontFamily="?attr/title_font_family"
@@ -103,104 +104,157 @@
         android:focusable="true"
         android:longClickable="true" />
 
-    <com.nex3z.flowlayout.FlowLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        app:flChildSpacing="16dp"
-        app:flChildSpacingForLastRow="align"
-        app:flRowSpacing="8dp"
-        app:flRowVerticalGravity="center">
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
 
-        <com.libRG.CustomTextView
-            android:id="@+id/type_text_view_item_post_detail_image_and_gif_autoplay"
-            android:layout_width="wrap_content"
+        <com.nex3z.flowlayout.FlowLayout
+            android:id="@+id/flow_layout_item_post_detail_image_and_gif_autoplay"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:text="@string/image"
-            android:textSize="?attr/font_12"
-            android:fontFamily="?attr/font_family"
-            app:lib_setRadius="6dp"
-            app:lib_setRoundedView="true"
-            app:lib_setShape="rectangle" />
+            app:flChildSpacing="16dp"
+            app:flChildSpacingForLastRow="align"
+            app:flRowSpacing="8dp"
+            app:flRowVerticalGravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/thumbnail_barrier"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.libRG.CustomTextView
-            android:id="@+id/spoiler_custom_text_view_item_post_detail_image_and_gif_autoplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/spoiler"
-            android:textSize="?attr/font_12"
-            android:fontFamily="?attr/font_family"
-            android:padding="4dp"
+            <com.libRG.CustomTextView
+                android:id="@+id/type_text_view_item_post_detail_image_and_gif_autoplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="@string/image"
+                android:textSize="?attr/font_12"
+                android:fontFamily="?attr/font_family"
+                app:lib_setRadius="6dp"
+                app:lib_setRoundedView="true"
+                app:lib_setShape="rectangle" />
+
+            <com.libRG.CustomTextView
+                android:id="@+id/spoiler_custom_text_view_item_post_detail_image_and_gif_autoplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/spoiler"
+                android:textSize="?attr/font_12"
+                android:fontFamily="?attr/font_family"
+                android:padding="4dp"
+                android:visibility="gone"
+                app:lib_setRadius="6dp"
+                app:lib_setRoundedView="true"
+                app:lib_setShape="rectangle" />
+
+            <com.libRG.CustomTextView
+                android:id="@+id/nsfw_text_view_item_post_detail_image_and_gif_autoplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="@string/nsfw"
+                android:textSize="?attr/font_12"
+                android:fontFamily="?attr/font_family"
+                android:visibility="gone"
+                app:lib_setRadius="6dp"
+                app:lib_setRoundedView="true"
+                app:lib_setShape="rectangle" />
+
+            <com.libRG.CustomTextView
+                android:id="@+id/flair_custom_text_view_item_post_detail_image_and_gif_autoplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:textSize="?attr/font_12"
+                android:fontFamily="?attr/font_family"
+                android:visibility="gone"
+                app:lib_setRadius="6dp"
+                app:lib_setRoundedView="true"
+                app:lib_setShape="rectangle" />
+
+            <TextView
+                android:id="@+id/upvote_ratio_text_view_item_post_detail_image_and_gif_autoplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="?attr/font_12"
+                android:fontFamily="?attr/font_family" />
+
+            <ImageView
+                android:id="@+id/archived_image_view_item_post_detail_image_and_gif_autoplay"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_archive_outline"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/locked_image_view_item_post_detail_image_and_gif_autoplay"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_lock_day_night_24dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/crosspost_image_view_item_post_detail_image_and_gif_autoplay"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_crosspost_24dp"
+                android:visibility="gone" />
+
+        </com.nex3z.flowlayout.FlowLayout>
+
+        <!-- Thumbnail on the right side -->
+        <RelativeLayout
+            android:id="@+id/image_view_wrapper_item_post_detail_image_and_gif_autoplay"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
             android:visibility="gone"
-            app:lib_setRadius="6dp"
-            app:lib_setRoundedView="true"
-            app:lib_setShape="rectangle" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.libRG.CustomTextView
-            android:id="@+id/nsfw_text_view_item_post_detail_image_and_gif_autoplay"
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/image_view_item_post_detail_image_and_gif_autoplay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/thumbnail_compact_layout_rounded_edge"
+                    android:scaleType="center" />
+
+            </FrameLayout>
+
+            <com.google.android.material.loadingindicator.LoadingIndicator
+                android:id="@+id/progress_bar_item_post_detail_image_and_gif_autoplay"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/thumbnail_barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:text="@string/nsfw"
-            android:textSize="?attr/font_12"
-            android:fontFamily="?attr/font_family"
-            android:visibility="gone"
-            app:lib_setRadius="6dp"
-            app:lib_setRoundedView="true"
-            app:lib_setShape="rectangle" />
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="image_view_wrapper_item_post_detail_image_and_gif_autoplay" />
 
-        <com.libRG.CustomTextView
-            android:id="@+id/flair_custom_text_view_item_post_detail_image_and_gif_autoplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="4dp"
-            android:textSize="?attr/font_12"
-            android:fontFamily="?attr/font_family"
-            android:visibility="gone"
-            app:lib_setRadius="6dp"
-            app:lib_setRoundedView="true"
-            app:lib_setShape="rectangle" />
-
-        <TextView
-            android:id="@+id/upvote_ratio_text_view_item_post_detail_image_and_gif_autoplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="?attr/font_12"
-            android:fontFamily="?attr/font_family" />
-
-        <ImageView
-            android:id="@+id/archived_image_view_item_post_detail_image_and_gif_autoplay"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_archive_outline"
-            android:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/locked_image_view_item_post_detail_image_and_gif_autoplay"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_lock_day_night_24dp"
-            android:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/crosspost_image_view_item_post_detail_image_and_gif_autoplay"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_crosspost_24dp"
-            android:visibility="gone" />
-
-    </com.nex3z.flowlayout.FlowLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
-        android:id="@+id/image_view_wrapper_item_post_detail_image_and_gif_autoplay"
+        android:id="@+id/full_image_view_wrapper_item_post_detail_image_and_gif_autoplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ml.docilealligator.infinityforreddit.customviews.AspectRatioGifImageView
-            android:id="@+id/image_view_item_post_detail_image_and_gif_autoplay"
+            android:id="@+id/full_image_view_item_post_detail_image_and_gif_autoplay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true" />
@@ -212,7 +266,7 @@
             android:layout_centerInParent="true">
 
             <com.google.android.material.loadingindicator.LoadingIndicator
-                android:id="@+id/progress_bar_item_post_detail_image_and_gif_autoplay"
+                android:id="@+id/progress_bar_full_item_post_detail_image_and_gif_autoplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true" />
